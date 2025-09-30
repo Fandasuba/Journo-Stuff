@@ -12,7 +12,7 @@
     {
       "id": "ea",
       "name": "Electronic Arts",
-      "legalNames": ["Electronic Arts Inc.", "EA", "Electronic Arts, Inc."],
+      "legalNames": ["Electronic Arts Inc.", "Electronic Arts, Inc.", "EA Sports", "EA Games"],
       "careerPageUrl": "https://www.ea.com/careers",
       "secCik": "0000712515",
       "priority": "high"
@@ -28,7 +28,7 @@
     {
       "id": "ubisoft",
       "name": "Ubisoft",
-      "legalNames": ["Ubisoft Entertainment SA", "Ubisoft Entertainment", "Ubisoft, Inc."],
+      "legalNames": ["Ubisoft Entertainment SA", "Ubisoft Entertainment S.A.", "Ubisoft, Inc.", "Ubisoft Inc."],
       "careerPageUrl": "https://www.ubisoft.com/en-us/company/careers",
       "priority": "high"
     },
@@ -51,28 +51,28 @@
     {
       "id": "nintendo",
       "name": "Nintendo",
-      "legalNames": ["Nintendo Co., Ltd.", "Nintendo of America Inc.", "Nintendo of America"],
+      "legalNames": ["Nintendo Co., Ltd.", "Nintendo of America Inc.", "Nintendo of America, Inc."],
       "careerPageUrl": "https://careers.nintendo.com/",
       "priority": "high"
     },
     {
       "id": "epic-games",
       "name": "Epic Games",
-      "legalNames": ["Epic Games, Inc.", "Epic Games"],
+      "legalNames": ["Epic Games, Inc.", "Epic Games Inc."],
       "careerPageUrl": "https://www.epicgames.com/site/careers",
       "priority": "high"
     },
     {
       "id": "valve",
       "name": "Valve Corporation",
-      "legalNames": ["Valve Corporation", "Valve Software"],
+      "legalNames": ["Valve Corporation", "Valve Corp."],
       "careerPageUrl": "https://www.valvesoftware.com/en/jobs",
       "priority": "high"
     },
     {
       "id": "riot-games",
       "name": "Riot Games",
-      "legalNames": ["Riot Games, Inc.", "Riot Games"],
+      "legalNames": ["Riot Games, Inc.", "Riot Games Inc."],
       "parent": "Tencent",
       "careerPageUrl": "https://www.riotgames.com/en/work-with-us",
       "priority": "high"
@@ -80,7 +80,7 @@
     {
       "id": "square-enix",
       "name": "Square Enix",
-      "legalNames": ["Square Enix Holdings Co., Ltd.", "Square Enix, Inc.", "Square Enix"],
+      "legalNames": ["Square Enix Holdings Co., Ltd.", "Square Enix, Inc.", "Square Enix Inc."],
       "careerPageUrl": "https://www.square-enix.com/careers/",
       "priority": "high"
     },
