@@ -1,0 +1,247 @@
+{
+  "companies": [
+    {
+      "id": "activision-blizzard",
+      "name": "Activision Blizzard",
+      "legalNames": ["Activision Blizzard, Inc.", "Blizzard Entertainment, Inc.", "Activision Publishing, Inc."],
+      "parent": "Microsoft Gaming",
+      "careerPageUrl": "https://careers.activisionblizzard.com/",
+      "secCik": "0000718877",
+      "priority": "high"
+    },
+    {
+      "id": "ea",
+      "name": "Electronic Arts",
+      "legalNames": ["Electronic Arts Inc.", "EA", "Electronic Arts, Inc."],
+      "careerPageUrl": "https://www.ea.com/careers",
+      "secCik": "0000712515",
+      "priority": "high"
+    },
+    {
+      "id": "take-two",
+      "name": "Take-Two Interactive",
+      "legalNames": ["Take-Two Interactive Software, Inc.", "Rockstar Games", "2K Games"],
+      "careerPageUrl": "https://www.take2games.com/careers/",
+      "secCik": "0000946581",
+      "priority": "high"
+    },
+    {
+      "id": "ubisoft",
+      "name": "Ubisoft",
+      "legalNames": ["Ubisoft Entertainment SA", "Ubisoft Entertainment", "Ubisoft, Inc."],
+      "careerPageUrl": "https://www.ubisoft.com/en-us/company/careers",
+      "priority": "high"
+    },
+    {
+      "id": "sony-interactive",
+      "name": "Sony Interactive Entertainment",
+      "legalNames": ["Sony Interactive Entertainment LLC", "Sony Computer Entertainment", "PlayStation Studios"],
+      "parent": "Sony Corporation",
+      "careerPageUrl": "https://www.playstation.com/en-us/corporate/playstation-careers/",
+      "priority": "high"
+    },
+    {
+      "id": "microsoft-gaming",
+      "name": "Microsoft Gaming",
+      "legalNames": ["Microsoft Corporation", "Xbox Game Studios", "Microsoft Gaming"],
+      "careerPageUrl": "https://careers.microsoft.com/",
+      "secCik": "0000789019",
+      "priority": "high"
+    },
+    {
+      "id": "nintendo",
+      "name": "Nintendo",
+      "legalNames": ["Nintendo Co., Ltd.", "Nintendo of America Inc.", "Nintendo of America"],
+      "careerPageUrl": "https://careers.nintendo.com/",
+      "priority": "high"
+    },
+    {
+      "id": "epic-games",
+      "name": "Epic Games",
+      "legalNames": ["Epic Games, Inc.", "Epic Games"],
+      "careerPageUrl": "https://www.epicgames.com/site/careers",
+      "priority": "high"
+    },
+    {
+      "id": "valve",
+      "name": "Valve Corporation",
+      "legalNames": ["Valve Corporation", "Valve Software"],
+      "careerPageUrl": "https://www.valvesoftware.com/en/jobs",
+      "priority": "high"
+    },
+    {
+      "id": "riot-games",
+      "name": "Riot Games",
+      "legalNames": ["Riot Games, Inc.", "Riot Games"],
+      "parent": "Tencent",
+      "careerPageUrl": "https://www.riotgames.com/en/work-with-us",
+      "priority": "high"
+    },
+    {
+      "id": "square-enix",
+      "name": "Square Enix",
+      "legalNames": ["Square Enix Holdings Co., Ltd.", "Square Enix, Inc.", "Square Enix"],
+      "careerPageUrl": "https://www.square-enix.com/careers/",
+      "priority": "high"
+    },
+    {
+      "id": "bandai-namco",
+      "name": "Bandai Namco Entertainment",
+      "legalNames": ["Bandai Namco Entertainment Inc.", "Bandai Namco Holdings Inc."],
+      "careerPageUrl": "https://www.bandainamcoent.com/careers",
+      "priority": "high"
+    },
+    {
+      "id": "capcom",
+      "name": "Capcom",
+      "legalNames": ["Capcom Co., Ltd.", "Capcom U.S.A., Inc."],
+      "careerPageUrl": "https://www.capcom.co.jp/careers/",
+      "priority": "high"
+    },
+    {
+      "id": "sega",
+      "name": "Sega",
+      "legalNames": ["Sega Corporation", "Sega of America", "Atlus"],
+      "careerPageUrl": "https://www.sega.com/careers",
+      "priority": "high"
+    },
+    {
+      "id": "konami",
+      "name": "Konami",
+      "legalNames": ["Konami Holdings Corporation", "Konami Digital Entertainment"],
+      "careerPageUrl": "https://www.konami.com/career/",
+      "priority": "medium"
+    },
+    {
+      "id": "wb-games",
+      "name": "Warner Bros. Games",
+      "legalNames": ["Warner Bros. Interactive Entertainment", "WB Games", "Warner Bros. Games"],
+      "parent": "Warner Bros. Discovery",
+      "careerPageUrl": "https://www.wbgames.com/careers",
+      "priority": "high"
+    },
+    {
+      "id": "embracer",
+      "name": "Embracer Group",
+      "legalNames": ["Embracer Group AB", "THQ Nordic", "Gearbox Entertainment", "Deep Silver"],
+      "careerPageUrl": "https://embracer.com/careers/",
+      "priority": "high"
+    },
+    {
+      "id": "cd-projekt",
+      "name": "CD Projekt",
+      "legalNames": ["CD Projekt S.A.", "CD Projekt RED"],
+      "careerPageUrl": "https://cdprojektred.com/jobs",
+      "priority": "medium"
+    },
+    {
+      "id": "tencent",
+      "name": "Tencent",
+      "legalNames": ["Tencent Holdings Limited", "Tencent Games"],
+      "careerPageUrl": "https://careers.tencent.com/",
+      "priority": "high"
+    },
+    {
+      "id": "netease",
+      "name": "NetEase",
+      "legalNames": ["NetEase, Inc.", "NetEase Games"],
+      "careerPageUrl": "https://neteasegames.com/careers",
+      "priority": "high"
+    },
+    {
+      "id": "krafton",
+      "name": "Krafton",
+      "legalNames": ["Krafton, Inc.", "PUBG Corporation"],
+      "careerPageUrl": "https://www.krafton.com/careers/",
+      "priority": "medium"
+    },
+    {
+      "id": "ncsoft",
+      "name": "NCSoft",
+      "legalNames": ["NCSOFT Corporation", "NCSoft"],
+      "careerPageUrl": "https://careers.ncsoft.com/",
+      "priority": "medium"
+    },
+    {
+      "id": "nexon",
+      "name": "Nexon",
+      "legalNames": ["Nexon Co., Ltd.", "Nexon America Inc."],
+      "careerPageUrl": "https://careers.nexon.com/",
+      "priority": "medium"
+    },
+    {
+      "id": "hoyoverse",
+      "name": "HoYoverse",
+      "legalNames": ["HoYoverse", "miHoYo Co., Ltd.", "Cognosphere Pte. Ltd."],
+      "careerPageUrl": "https://www.hoyoverse.com/careers",
+      "priority": "high"
+    },
+    {
+      "id": "kuro-games",
+      "name": "Kuro Games",
+      "legalNames": ["Kuro Games", "Kuro Technology"],
+      "priority": "medium"
+    },
+    {
+      "id": "shift-up",
+      "name": "Shift Up",
+      "legalNames": ["Shift Up Corporation", "Shift Up"],
+      "careerPageUrl": "https://shiftup.co.kr/",
+      "priority": "medium"
+    },
+    {
+      "id": "yostar",
+      "name": "Yostar",
+      "legalNames": ["Yostar, Inc.", "Yostar Limited"],
+      "priority": "medium"
+    },
+    {
+      "id": "cygames",
+      "name": "Cygames",
+      "legalNames": ["Cygames, Inc."],
+      "careerPageUrl": "https://www.cygames.co.jp/careers/",
+      "priority": "medium"
+    },
+    {
+      "id": "aniplex",
+      "name": "Aniplex",
+      "legalNames": ["Aniplex Inc.", "Aniplex of America"],
+      "parent": "Sony Music Entertainment",
+      "priority": "medium"
+    },
+    {
+      "id": "papergames",
+      "name": "Papergames",
+      "legalNames": ["Papergames", "Suzhou Nikki Co., Ltd."],
+      "priority": "medium"
+    },
+    {
+      "id": "devolver",
+      "name": "Devolver Digital",
+      "legalNames": ["Devolver Digital, Inc."],
+      "careerPageUrl": "https://www.devolverdigital.com/jobs",
+      "priority": "low"
+    },
+    {
+      "id": "focus",
+      "name": "Focus Entertainment",
+      "legalNames": ["Focus Entertainment", "Focus Home Interactive"],
+      "careerPageUrl": "https://www.focus-entmt.com/careers",
+      "priority": "low"
+    },
+    {
+      "id": "paradox",
+      "name": "Paradox Interactive",
+      "legalNames": ["Paradox Interactive AB"],
+      "careerPageUrl": "https://career.paradoxplaza.com/",
+      "priority": "low"
+    },
+    {
+      "id": "505-games",
+      "name": "505 Games",
+      "legalNames": ["505 Games S.p.A.", "505 Games"],
+      "careerPageUrl": "https://www.505games.com/jobs/",
+      "priority": "low"
+    }
+  ]
+}
