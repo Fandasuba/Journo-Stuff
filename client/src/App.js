@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { RefreshCw, AlertCircle, TrendingUp, FileText, Calendar } from 'lucide-react';
 
-const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:3001/api';
+const API_URL = process.env.REACT_APP_API_URL || 'https://gaming-news-api.onrender.com/api';
 
 export default function NewsDashboard() {
   const [lawsuits, setLawsuits] = useState([]);
