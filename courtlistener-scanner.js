@@ -82,34 +82,57 @@ class CourtListenerScanner {
       c => c.priority === 'high'
     );
 
-    console.log(`Scanning ${highPriorityCompanies.length} high priority companies...`);
+     const totalCompanies = highPriorityCompanies.length;
+  
+  // Emit initial count
+  if (onProgress) {
+    onProgress({
+      message: `Scanning ${totalCompanies} companies...`,
+      currentCompany: 0,
+      totalCompanies: totalCompanies,
+      companyName: ''
+    });
+  }
+  
+  console.log(`Scanning ${totalCompanies} high priority companies...`);
 
-    for (const company of highPriorityCompanies) {
-      console.log(`Checking ${company.name}...`);
-
-      // Search using all legal name variations
-      for (const legalName of company.legalNames) {
-        const cases = await this.searchCases(legalName, dateString);
-        
-        if (cases.length > 0) {
-          results.push({
-            company: company.name,
-            companyId: company.id,
-            searchTerm: legalName,
-            cases: cases,
-            scannedAt: new Date().toISOString()
-          });
-
-          console.log(`  Found ${cases.length} case(s) for ${legalName}`);
-        }
-
-        // Rate limiting - be respectful
-        await this.sleep(1000);
-      }
+  let companyIndex = 0;
+  for (const company of highPriorityCompanies) {
+    companyIndex++;
+    
+    // EMIT COMPANY NAME TO SOCKET
+    if (onProgress) {
+      onProgress({
+        message: `Scanning ${company.name}...`,
+        currentCompany: companyIndex,
+        totalCompanies: totalCompanies,
+        companyName: company.name  // This gets sent to frontend
+      });
     }
 
-    return results;
+    console.log(`Checking ${company.name}...`);
+
+    for (const legalName of company.legalNames) {
+      const cases = await this.searchCases(legalName, dateString);
+      
+      if (cases.length > 0) {
+        results.push({
+          company: company.name,
+          companyId: company.id,
+          searchTerm: legalName,
+          cases: cases,
+          scannedAt: new Date().toISOString()
+        });
+
+        console.log(`  Found ${cases.length} case(s) for ${legalName}`);
+      }
+
+      await this.sleep(1000);
+    }
   }
+
+  return results;
+}
 
   /**
    * Analyze a case for interesting keywords
