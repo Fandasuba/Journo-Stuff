@@ -16,7 +16,7 @@ class CourtListenerScanner {
    */
   async searchCases(companyName, dateAfter = null) {
     const params = new URLSearchParams({
-      q: companyName,
+      q: `"${companyName}"`,
       type: 'r' // r = RECAP dockets
     });
 
