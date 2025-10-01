@@ -1,12 +1,13 @@
 // courtlistener-scanner.js
 // CourtListener API scanner for tracking gaming company lawsuits
 
-const companies = require('./companies.json');
+// Note: Using native fetch (available in Node 18+)
+const companiesData = require('./companies.json');
 
 class CourtListenerScanner {
   constructor(apiKey) {
     this.apiKey = apiKey;
-    this.baseUrl = 'https://www.courtlistener.com/api/rest/v3';
+    this.baseUrl = 'https://www.courtlistener.com/api/rest/v4';
   }
 
   /**
@@ -77,7 +78,7 @@ class CourtListenerScanner {
     const results = [];
 
     // Get high priority companies first
-    const highPriorityCompanies = companies.companies.filter(
+    const highPriorityCompanies = companiesData.companies.filter(
       c => c.priority === 'high'
     );
 
