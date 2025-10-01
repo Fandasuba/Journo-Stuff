@@ -354,11 +354,11 @@ app.delete('/api/lawsuits/flush', async (req, res) => {
     const result = await pool.query('DELETE FROM lawsuits');
     res.json({
       success: true,
-      message: 'Deleted ${result.rowCount} lawsuits from database.'
+      message: `Deleted ${result.rowCount} lawsuits from database.` 
     });
-  } catch (error){
+  } catch (error) {
     console.error("error flushing database:", error);
-    res.status(500)/express.json({ success: false, error: error.message });
+    res.status(500).json({ success: false, error: error.message });
   }
 });
 
@@ -366,7 +366,7 @@ app.delete('/api/lawsuits/flush', async (req, res) => {
 async function start() {
   await initDatabase();
   
-  app.listen(port, () => {
+  server.listen(port, () => {
     console.log(`Server running on port ${port}`);
     console.log(`Environment: ${process.env.NODE_ENV || 'development'}`);
   });
