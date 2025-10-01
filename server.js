@@ -4,22 +4,11 @@
 const express = require('express');
 const cors = require('cors');
 const { Pool } = require('pg');
-const http = require('http');
-const { Server } = require('socket.io');
 const CourtListenerScanner = require('./courtlistener-scanner');
 require('dotenv').config();
 
 const app = express();
 const port = process.env.PORT || 3001;
-
-const server = http.createServer(app);
-const io = new Server(server, {
-  cors: {
-    origin: process.env.CLIENT_URL || "http://localhost:3000",
-    methods: ["GET", "POST"]
-  }
-});
-
 
 // Middleware
 app.use(cors());
@@ -34,13 +23,14 @@ const pool = new Pool({
 // Initialize scanner
 const courtScanner = new CourtListenerScanner(process.env.COURTLISTENER_API_KEY);
 
-io.on('connection', (socket) => {
-  console.log('Client connected:', socket.id);
-  
-  socket.on('disconnect', () => {
-    console.log('Client disconnected:', socket.id);
-  });
-});
+// Store scan progress in memory
+let currentScanProgress = {
+  isScanning: false,
+  message: '',
+  currentCompany: 0,
+  totalCompanies: 0,
+  companyName: ''
+};
 
 // Database schema initialization
 async function initDatabase() {
@@ -165,6 +155,11 @@ app.get('/api/lawsuits/stats', async (req, res) => {
   }
 });
 
+// Get scan progress
+app.get('/api/scan/progress', (req, res) => {
+  res.json(currentScanProgress);
+});
+
 // Manually trigger a scan for specific company
 app.post('/api/scan/company', async (req, res) => {
   try {
@@ -253,34 +248,38 @@ app.post('/api/scan/company', async (req, res) => {
 // Manually trigger a scan
 app.post('/api/scan/lawsuits', async (req, res) => {
   try {
-    const { hoursBack = 168 } = req.body; // Default to 7 days
+    const { hoursBack = 168 } = req.body;
+    
+    currentScanProgress = {
+      isScanning: true,
+      message: 'Starting scan...',
+      currentCompany: 0,
+      totalCompanies: 0,
+      companyName: ''
+    };
     
     console.log(`Starting lawsuit scan (${hoursBack} hours back)...`);
     
-    io.emit('scan:start', { 
-      message: 'Starting scan...',
-      totalCompanies: 0 
-    });
-
-    // Note: For real-time progress, you'd need websockets or SSE
-    // For now, this just runs and returns when complete
-     const scanResults = await courtScanner.scanAllCompanies(
+    const scanResults = await courtScanner.scanAllCompanies(
       hoursBack,
       (progressData) => {
-        // Emit progress to all connected clients
-        io.emit('scan:progress', progressData);
+        currentScanProgress = {
+          isScanning: true,
+          ...progressData
+        };
       }
     );
+    
     const formattedResults = courtScanner.formatResults(scanResults);
     
-    io.emit('scan:progress', {
+    currentScanProgress = {
+      isScanning: true,
       message: 'Saving to database...',
-      companyName: '',
-      currentCompany: formattedResults.length,
-      totalCompanies: formattedResults.length
-    });
+      currentCompany: currentScanProgress.totalCompanies,
+      totalCompanies: currentScanProgress.totalCompanies,
+      companyName: ''
+    };
 
-    // Save to database
     let savedCount = 0;
     for (const lawsuit of formattedResults) {
       try {
@@ -310,11 +309,13 @@ app.post('/api/scan/lawsuits', async (req, res) => {
       }
     }
 
-    io.emit('scan:complete', {
-      message: `Scan complete. Found ${formattedResults.length} cases, saved ${savedCount}.`,
-      found: formattedResults.length,
-      saved: savedCount
-    });
+    currentScanProgress = {
+      isScanning: false,
+      message: 'Complete',
+      currentCompany: 0,
+      totalCompanies: 0,
+      companyName: ''
+    };
     
     res.json({
       success: true,
@@ -327,6 +328,13 @@ app.post('/api/scan/lawsuits', async (req, res) => {
     });
   } catch (error) {
     console.error('Scan error:', error);
+    currentScanProgress = {
+      isScanning: false,
+      message: 'Error: ' + error.message,
+      currentCompany: 0,
+      totalCompanies: 0,
+      companyName: ''
+    };
     res.status(500).json({ success: false, error: error.message });
   }
 });
@@ -349,12 +357,13 @@ app.get('/api/scan/status', async (req, res) => {
   }
 });
 
+// Flush database
 app.delete('/api/lawsuits/flush', async (req, res) => {
   try {
     const result = await pool.query('DELETE FROM lawsuits');
     res.json({
       success: true,
-      message: `Deleted ${result.rowCount} lawsuits from database.` 
+      message: `Deleted ${result.rowCount} lawsuits from database.`
     });
   } catch (error) {
     console.error("error flushing database:", error);
@@ -366,11 +375,10 @@ app.delete('/api/lawsuits/flush', async (req, res) => {
 async function start() {
   await initDatabase();
   
-  server.listen(port, () => {
+  app.listen(port, () => {
     console.log(`Server running on port ${port}`);
     console.log(`Environment: ${process.env.NODE_ENV || 'development'}`);
   });
 }
-
 
 start().catch(console.error);

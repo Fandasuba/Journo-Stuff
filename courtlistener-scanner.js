@@ -70,7 +70,7 @@ class CourtListenerScanner {
   /**
    * Scan all companies for new cases
    */
-  async scanAllCompanies(hoursBack = 24) {
+  async scanAllCompanies(hoursBack = 24, onProgress = null) {
     const dateAfter = new Date();
     dateAfter.setHours(dateAfter.getHours() - hoursBack);
     const dateString = dateAfter.toISOString().split('T')[0];
@@ -106,7 +106,7 @@ class CourtListenerScanner {
         message: `Scanning ${company.name}...`,
         currentCompany: companyIndex,
         totalCompanies: totalCompanies,
-        companyName: company.name  // This gets sent to frontend
+        companyName: company.name  // Sending company name to front end for rendering
       });
     }
 
