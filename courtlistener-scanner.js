@@ -12,16 +12,16 @@ class CourtListenerScanner {
 
   /**
    * Search for cases involving a specific company
+   * CHANGED: Now uses /search/ endpoint which actually works for discovery
    */
   async searchCases(companyName, dateAfter = null) {
     const params = new URLSearchParams({
       q: companyName,
-      type: 'r', // Dockets
-      order_by: 'dateFiled desc'
+      type: 'r' // r = RECAP dockets
     });
 
     if (dateAfter) {
-      params.append('filed_after', dateAfter);
+      params.append('filed_after', dateAfter); // V4 uses filed_after
     }
 
     const url = `${this.baseUrl}/search/?${params}`;
@@ -151,6 +151,7 @@ class CourtListenerScanner {
 
   /**
    * Format results for dashboard display
+   * CHANGED: Updated field names to match V4 search API response format
    */
   formatResults(scanResults) {
     const formatted = [];
@@ -160,15 +161,15 @@ class CourtListenerScanner {
         const analysis = this.analyzeCase(caseData);
         
         formatted.push({
-          id: caseData.id,
+          id: caseData.docket_id, // V4 search uses docket_id not id
           company: result.company,
           companyId: result.companyId,
-          caseName: caseData.caseName,
-          docketNumber: caseData.docketNumber,
-          court: caseData.court,
-          dateFiled: caseData.dateFiled,
+          caseName: caseData.caseName, // V4 search uses caseName (camelCase)
+          docketNumber: caseData.docketNumber, // V4 search uses docketNumber (camelCase)
+          court: caseData.court, // Court name as string
+          dateFiled: caseData.dateFiled, // V4 search uses dateFiled (camelCase)
           cause: caseData.cause,
-          url: `https://www.courtlistener.com${caseData.absolute_url}`,
+          url: `https://www.courtlistener.com${caseData.docket_absolute_url}`, // V4 uses docket_absolute_url
           analysis: analysis,
           scannedAt: result.scannedAt
         });
