@@ -10,6 +10,13 @@
       "priority": "high"
     },
     {
+      "id": "bethesda",
+      "name": "Bethesda",
+      "legalNames": ["Bethesda Softworks LLC", "Bethesda Softworks, LLC", "ZeniMax Media Inc."],
+      "parent": "Microsoft Gaming",
+      "priority": "high"
+    },
+    {
       "id": "ea",
       "name": "Electronic Arts",
       "legalNames": ["Electronic Arts Inc.", "Electronic Arts, Inc.", "EA Sports", "EA Games"],
@@ -43,7 +50,7 @@
     {
       "id": "microsoft-gaming",
       "name": "Microsoft Gaming",
-      "legalNames": ["Microsoft Corporation", "Xbox Game Studios", "Microsoft Gaming"],
+      "legalNames": ["Microsoft Corporation", "Xbox Game Studios", "Bethesda Softworks LLC", "ZeniMax Media Inc."],
       "careerPageUrl": "https://careers.microsoft.com/",
       "secCik": "0000789019",
       "priority": "high"
