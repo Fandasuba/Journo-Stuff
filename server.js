@@ -306,6 +306,19 @@ app.get('/api/scan/status', async (req, res) => {
   }
 });
 
+app.delete('/api/lawsuits/flush', async (req, res) => {
+  try {
+    const result = await pool.query('DELETE FROM lawsuits');
+    res.json({
+      success: true,
+      message: 'Deleted ${result.rowCount} lawsuits from database.'
+    });
+  } catch (error){
+    console.error("error flushing database:", error);
+    res.status(500)/express.json({ success: false, error: error.message });
+  }
+});
+
 // Start server and initialize
 async function start() {
   await initDatabase();
